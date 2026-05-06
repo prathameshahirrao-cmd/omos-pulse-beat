@@ -72,6 +72,8 @@ const NAV_SECTIONS = [
       { id: 'merchant-management',           label: 'Merchant Management' },
       // ── Product catalog Management (top-level direct link, no group)
       { id: 'product-catalog',               label: 'Product catalog Management' },
+      // ── Advertiser Management (Pulse Control Panel — centralized advertiser config hub)
+      { id: 'advertiser-management',         label: 'Advertiser Management',                    group: 'Advertiser Management', isGroupHeader: true },
       // ── Audience Manager
       { id: 'manage-segments',               label: 'Manage Segments',                         group: 'Audience Manager' },
       { id: 'manage-attributes',             label: 'Manage Attributes',                        group: 'Audience Manager' },
@@ -141,7 +143,8 @@ const NAV_SECTIONS = [
       { id: 'product-ads-analytics',    label: 'Ad Server Analytics',    group: 'Analytics' },
       { id: 'product-ads-demand-supply', label: 'Demand & Supply',        group: 'Analytics' },
       { id: 'product-ads-live',         label: 'Live Insights',           group: 'Analytics' },
-      { id: 'product-ads-yield',        label: 'Yield Control',           group: 'Campaign Management' },
+      { id: 'product-ads-yield',        label: 'CPC Yield Control',       group: 'Campaign Management' },
+      { id: 'product-ads-yield-cpm',    label: 'CPM Yield Control',       group: 'Campaign Management' },
       { id: 'product-ads-keyword',      label: 'Keyword Bid Settings',    group: 'Campaign Management' },
       { id: 'product-ads-bulk',         label: 'Campaign Bulk Actions',   group: 'Campaign Management' },
     ],
