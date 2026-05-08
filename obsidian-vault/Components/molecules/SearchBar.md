@@ -5,7 +5,7 @@ name: SearchBar
 tags: [molecule, ui-component, form, interactive]
 source-file: src/ui/molecules/SearchBar.jsx
 export-name: SearchBar
-last-updated: 2026-05-07T06:30:03Z
+last-updated: 2026-05-08T06:30:02Z
 ---
 
 # SearchBar

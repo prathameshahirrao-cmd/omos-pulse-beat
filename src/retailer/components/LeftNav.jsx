@@ -166,10 +166,8 @@ const NAV_SECTIONS = [
       { id: 'display-ads-live',         label: 'Live Insights',              group: 'Analytics' },
       { id: 'display-ads-campaigns',    label: 'Campaign Review',            group: 'Campaign Management' },
       { id: 'display-ads-bulk',         label: 'Campaign Bulk Management',   group: 'Campaign Management' },
-      { id: 'display-ads-inventory',    label: 'Inventory Setup',            group: 'Setup' },
-      { id: 'display-ads-page-setup',   label: 'Page Setup',                 group: 'Setup' },
+      { id: 'display-ads-inventory',    label: 'Inventory Management',       group: 'Setup' },
       { id: 'display-ads-ad-format',    label: 'Ad Format Setup',            group: 'Setup' },
-      { id: 'display-ads-targeting',    label: 'Build Your Own Targeting',   group: 'Setup' },
     ],
   },
   {

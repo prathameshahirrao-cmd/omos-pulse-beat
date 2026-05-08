@@ -3,7 +3,7 @@ type: component
 layer: advertiser
 name: ai-debugger-panel
 source-file: src/advertiser/components/ai-debugger-panel.jsx
-last-updated: 2026-05-07T06:30:06Z
+last-updated: 2026-05-08T06:30:07Z
 tags: [advertiser, ui-component]
 ---
 

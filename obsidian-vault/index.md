@@ -65,13 +65,13 @@ See [[Personas/index]] for the full registry.
 
 | Time | Note | Trigger |
 |------|------|---------|
-| 2026-05-07T06:30:08Z | Components/advertiser/metrics-cards.md | src/advertiser/components/metrics-cards.jsx |
-| 2026-05-07T06:30:07Z | Components/advertiser/funnel-simulation-section.md | src/advertiser/components/funnel-simulation-section.jsx |
-| 2026-05-07T06:30:07Z | Components/advertiser/theme-provider.md | src/advertiser/components/theme-provider.jsx |
-| 2026-05-07T06:30:06Z | Components/advertiser/TopBar.md | src/advertiser/components/TopBar.jsx |
-| 2026-05-07T06:30:06Z | Components/advertiser/sofie-chat-panel.md | src/advertiser/components/sofie-chat-panel.jsx |
-| 2026-05-07T06:30:06Z | Components/advertiser/budget-adjust-drawer.md | src/advertiser/components/budget-adjust-drawer.jsx |
-| 2026-05-07T06:30:06Z | Components/advertiser/sidebar.md | src/advertiser/components/sidebar.jsx |
-| 2026-05-07T06:30:06Z | Components/advertiser/ai-suggestions-panel.md | src/advertiser/components/ai-suggestions-panel.jsx |
-| 2026-05-07T06:30:06Z | Components/advertiser/performance-table.md | src/advertiser/components/performance-table.jsx |
-| 2026-05-07T06:30:06Z | Components/advertiser/filter-builder.md | src/advertiser/components/filter-builder.jsx |
+| 2026-05-08T06:30:11Z | Components/advertiser/metrics-cards.md | src/advertiser/components/metrics-cards.jsx |
+| 2026-05-08T06:30:08Z | Components/advertiser/funnel-simulation-section.md | src/advertiser/components/funnel-simulation-section.jsx |
+| 2026-05-08T06:30:08Z | Components/advertiser/theme-provider.md | src/advertiser/components/theme-provider.jsx |
+| 2026-05-08T06:30:07Z | Components/advertiser/TopBar.md | src/advertiser/components/TopBar.jsx |
+| 2026-05-08T06:30:07Z | Components/advertiser/sofie-chat-panel.md | src/advertiser/components/sofie-chat-panel.jsx |
+| 2026-05-08T06:30:07Z | Components/advertiser/budget-adjust-drawer.md | src/advertiser/components/budget-adjust-drawer.jsx |
+| 2026-05-08T06:30:07Z | Components/advertiser/sidebar.md | src/advertiser/components/sidebar.jsx |
+| 2026-05-08T06:30:07Z | Components/advertiser/ai-suggestions-panel.md | src/advertiser/components/ai-suggestions-panel.jsx |
+| 2026-05-08T06:30:07Z | Components/advertiser/performance-table.md | src/advertiser/components/performance-table.jsx |
+| 2026-05-08T06:30:07Z | Components/advertiser/filter-builder.md | src/advertiser/components/filter-builder.jsx |

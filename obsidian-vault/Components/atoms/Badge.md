@@ -5,7 +5,7 @@ name: Badge
 tags: [atom, ui-component, display, status]
 source-file: src/ui/atoms/Badge.jsx
 export-name: Badge
-last-updated: 2026-05-07T06:30:04Z
+last-updated: 2026-05-08T06:30:03Z
 ---
 
 # Badge

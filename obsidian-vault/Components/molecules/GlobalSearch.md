@@ -5,7 +5,7 @@ name: GlobalSearch
 tags: [molecule, ui-component, interactive, navigation]
 source-file: src/ui/molecules/GlobalSearch.jsx
 export-name: GlobalSearch
-last-updated: 2026-05-07T06:30:02Z
+last-updated: 2026-05-08T06:30:01Z
 ---
 
 # GlobalSearch

@@ -5,7 +5,7 @@ name: Checkbox
 tags: [atom, ui-component, form, interactive]
 source-file: src/ui/atoms/Checkbox.jsx
 export-name: Checkbox
-last-updated: 2026-05-07T06:30:03Z
+last-updated: 2026-05-08T06:30:02Z
 ---
 
 # Checkbox

@@ -3,7 +3,7 @@ type: component
 layer: advertiser
 name: performance-trend
 source-file: src/advertiser/components/performance-trend.jsx
-last-updated: 2026-05-07T06:30:05Z
+last-updated: 2026-05-08T06:30:06Z
 tags: [advertiser, ui-component]
 ---
 

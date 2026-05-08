@@ -5,7 +5,7 @@ name: Tag
 tags: [atom, ui-component, display]
 source-file: src/ui/atoms/Tag.jsx
 export-name: Tag
-last-updated: 2026-05-07T06:30:04Z
+last-updated: 2026-05-08T06:30:03Z
 ---
 
 # Tag

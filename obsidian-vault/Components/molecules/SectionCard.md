@@ -5,7 +5,7 @@ name: SectionCard
 tags: [molecule, ui-component, layout]
 source-file: src/ui/molecules/SectionCard.jsx
 export-name: SectionCard
-last-updated: 2026-05-07T06:30:03Z
+last-updated: 2026-05-08T06:30:01Z
 ---
 
 # SectionCard

@@ -5,7 +5,7 @@ name: KPIChip
 tags: [molecule, ui-component, data, display]
 source-file: src/ui/molecules/KPIChip.jsx
 export-name: KPIChip
-last-updated: 2026-05-07T06:30:03Z
+last-updated: 2026-05-08T06:30:02Z
 ---
 
 # KPIChip

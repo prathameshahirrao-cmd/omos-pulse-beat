@@ -57,6 +57,9 @@ import MerchantManagementPage from './components/MerchantManagementPage';
 import AdvertiserManagementPage from './components/AdvertiserManagementPage';
 import AdvertiserOnboardingCatalogPage from './components/AdvertiserOnboardingCatalogPage';
 import CatalogStatusPage from './components/CatalogStatusPage';
+import DisplayAdsBulkPage from './components/DisplayAdsBulkPage';
+import DisplayAdsAdFormatPage from './components/DisplayAdsAdFormatPage';
+import DisplayAdsInventoryMgmtPage from './components/DisplayAdsInventoryMgmtPage';
 import DevelopSettingsPage from './components/DevelopSettingsPage';
 import SetupDetailsPage from './components/SetupDetailsPage';
 import BYOTAdminConfigPage from './components/BYOTAdminConfigPage';
@@ -459,6 +462,33 @@ export default function App() {
             <TopBar section="Display Ads" page="Campaign Review" onNavigate={setActivePage} />
             <main style={{ flex: 1, overflowY: 'auto', background: 'var(--osmos-bg-subtle)' }}>
               <DisplayAdsCampaignsPage />
+            </main>
+          </>
+        );
+      case 'display-ads-bulk':
+        return (
+          <>
+            <TopBar section="Display Ads" page="Campaign Bulk Management" onNavigate={setActivePage} />
+            <main style={{ flex: 1, overflowY: 'auto', background: 'var(--osmos-bg-subtle)' }}>
+              <DisplayAdsBulkPage />
+            </main>
+          </>
+        );
+      case 'display-ads-ad-format':
+        return (
+          <>
+            <TopBar section="Display Ads" page="Ad Format Setup" onNavigate={setActivePage} />
+            <main style={{ flex: 1, overflowY: 'auto', background: 'var(--osmos-bg-subtle)' }}>
+              <DisplayAdsAdFormatPage />
+            </main>
+          </>
+        );
+      case 'display-ads-inventory':
+        return (
+          <>
+            <TopBar section="Display Ads" page="Inventory Management" onNavigate={setActivePage} />
+            <main style={{ flex: 1, overflowY: 'auto', background: 'var(--osmos-bg)' }}>
+              <DisplayAdsInventoryMgmtPage />
             </main>
           </>
         );

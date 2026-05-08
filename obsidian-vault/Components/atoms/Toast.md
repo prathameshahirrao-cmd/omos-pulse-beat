@@ -5,7 +5,7 @@ name: Toast
 tags: [atom, ui-component, notification, interactive]
 source-file: src/ui/atoms/Toast.jsx
 export-name: Toast
-last-updated: 2026-05-07T06:30:04Z
+last-updated: 2026-05-08T06:30:02Z
 ---
 
 # Toast

@@ -3,7 +3,7 @@ type: component
 layer: advertiser
 name: funnel-simulation-section
 source-file: src/advertiser/components/funnel-simulation-section.jsx
-last-updated: 2026-05-07T06:30:07Z
+last-updated: 2026-05-08T06:30:08Z
 tags: [advertiser, ui-component]
 ---
 

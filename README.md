@@ -16,6 +16,117 @@ pnpm build
 
 ---
 
+## Database (Neon)
+
+The app uses a shared [Neon](https://neon.tech) PostgreSQL database for all mock data — campaigns, advertisers, display pages, inventories, wallets, yield control rows, and more. Each developer works on their own **instant database branch** so nobody's migrations affect anyone else.
+
+### First-time setup (new contributors)
+
+**1. Copy the env template**
+```bash
+cp .env.example .env
+```
+
+**2. Fill in two values in `.env`**
+
+| Variable | Where to get it |
+|----------|----------------|
+| `VITE_DATABASE_URL` | Ask a teammate — it's the main branch connection string (in the team password manager) |
+| `NEON_API_KEY` | Your personal key — generate at [console.neon.tech/app/settings/api-keys](https://console.neon.tech/app/settings/api-keys) |
+
+**3. Create your personal database branch**
+```bash
+pnpm db:branch
+```
+This calls the Neon API, creates an isolated copy of the database under `dev/your-git-name`, and updates `VITE_DATABASE_URL` in your `.env` to point to it. The original main URL is preserved as `NEON_MAIN_DATABASE_URL`.
+
+**4. Seed your branch**
+```bash
+pnpm db:migrate
+```
+Drops and recreates all 17 tables in *your branch only*, then seeds them with realistic mock data. Nobody else's data is touched.
+
+---
+
+### DB scripts
+
+| Command | What it does |
+|---------|-------------|
+| `pnpm db:branch` | Creates a personal Neon branch (`dev/<your-git-name>`) and updates `.env` |
+| `pnpm db:branch dev/custom-name` | Same, with an explicit branch name |
+| `pnpm db:migrate` | Resets + reseeds all tables on your current branch |
+
+---
+
+### Schema — 17 tables
+
+| Table | Contents |
+|-------|----------|
+| `advertisers` | 9 merchants with persona, payment type, onboarding metadata |
+| `platform_users` | 15 users across super_admin / ops / admin / advertiser roles |
+| `campaigns` | 20 campaigns (display + sponsored) with full metrics |
+| `products` | 8 products with category, brand, price, stock |
+| `display_pages` | Page Setup data — name, API ID, tag, impressions, inventory usage |
+| `display_inventories` | Inventory slots linked to pages, with position + status |
+| `targeting_keys` | BYOT targeting keys |
+| `targeting_values` | Values per targeting key (joined via `key_id`) |
+| `wallets` | Per-advertiser wallet balances and top-up counts |
+| `wallet_transactions` | Transaction log — Top-Up, Deduction, Refund |
+| `wallet_rules` | Automated wallet rules (triggers, segments, rule types) |
+| `audience_attributes` | Audience targeting attributes for Audience Manager |
+| `activity_logs` | Platform audit log — user, action, description, timestamp |
+| `display_demand_supply` | Display ad placement metrics (fill rate, CPM, impressions) |
+| `sponsored_demand_supply` | Sponsored ad unit metrics (fill rate, CPC, clicks) |
+| `product_yield_cpc` | CPC yield control by category (floor, ceiling, multiplier, perf metrics) |
+| `product_yield_cpm` | CPM yield control by category |
+
+---
+
+### Using DB data in a component
+
+The query layer lives in `src/db/queries/`. Drop the hardcoded mock array and replace with a single hook call:
+
+```jsx
+// Before — hardcoded mock data
+const PAGE_DATA = [
+  { name: 'TestQA98', apiId: 'home_pg', ... },
+  ...
+];
+
+// After — live Neon query
+import { useQuery } from '../../hooks/useQuery';
+import { getDisplayPages } from '../../db/queries/displayAds';
+
+const { data: pages, loading } = useQuery(getDisplayPages);
+```
+
+Available query functions:
+
+| Import from | Functions |
+|-------------|-----------|
+| `src/db/queries/advertisers` | `getAdvertisers`, `getAdvertiserById`, `getOnboardingCatalog` |
+| `src/db/queries/users` | `getSuperAdminUsers`, `getOpsUsers`, `getAdvertiserUsers` |
+| `src/db/queries/campaigns` | `getCampaigns`, `getDisplayCampaigns`, `getSponsoredCampaigns` |
+| `src/db/queries/displayAds` | `getDisplayPages`, `getDisplayInventories`, `getDisplayDemandSupply`, `getTargetingKeys`, `getTargetingValues` |
+| `src/db/queries/finance` | `getWallets`, `getWalletTransactions`, `getWalletRules`, `getFinanceAdvertisers` |
+| `src/db/queries/controlCenter` | `getAudienceAttributes`, `getActivityLogs`, `getProducts`, `getSponsoredDemandSupply` |
+| `src/db/queries/yieldControl` | `getCPCYieldRows`, `getCPMYieldRows` |
+
+---
+
+### Branching model
+
+```
+neondb (main branch)      ← clean seed, only CI/migration-owner touches this
+  ├── dev/rishikesh       ← your personal branch, fully isolated
+  ├── dev/alice           ← Alice's branch
+  └── dev/bob             ← Bob's branch
+```
+
+Branches are **zero-copy and instantaneous** — Neon only stores the delta. Running `pnpm db:migrate` on your branch costs nothing and affects nobody else. To switch back to the main branch at any time, swap `VITE_DATABASE_URL` and `NEON_MAIN_DATABASE_URL` in your `.env`.
+
+---
+
 ## Installing skills in another repo
 
 If you are **not** forking this repo but want the same Claude Code skills in your own project, install the published npm package:
@@ -248,7 +359,12 @@ src/
 ├── retailer/          Legacy retailer console (50+ pages)
 ├── advertiser/        Advertiser "Beat" console (shadcn + Tailwind → Osmos migration in progress)
 ├── chooser/           Landing page / app selector
-└── ui/                Shared component library (atoms, molecules, patterns)
+├── ui/                Shared component library (atoms, molecules, patterns)
+├── db/
+│   ├── client.js      Neon HTTP client (reads VITE_DATABASE_URL)
+│   └── queries/       Per-entity query functions (advertisers, campaigns, displayAds, …)
+└── hooks/
+    └── useQuery.js    Generic React hook: useQuery(queryFn, ...args)
 
 .claude/
 ├── skills/            14 Claude Code skills (design-to-code pipeline + review suite)
@@ -257,6 +373,8 @@ src/
 graphify-out/          AST knowledge graph (generated, committed)
 obsidian-vault/        Obsidian-compatible knowledge vault (generated, committed)
 scripts/
+├── db-branch.js       Creates a personal Neon DB branch + updates .env (pnpm db:branch)
+├── db-migrate.js      Drops + recreates + seeds all 17 tables (pnpm db:migrate)
 ├── vault-sync.py      Incremental vault updater (called by PostToolUse hook)
 ├── rebuild-vault.sh   Full daily vault rebuild (run by cron at 12:00pm)
 ├── setup-cron.js      Registers the daily cron entry (pnpm setup:vault-cron)
